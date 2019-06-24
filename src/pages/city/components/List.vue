@@ -11,59 +11,18 @@
             </div>
 
             <div class="area">
-                <div class="title border-topbottom">famous city</div>
+                <div class="title border-topbottom">hot city</div>
                 <div class="button-list">
-                    <div class = "button-wrapper">
-                        <div class="button">BEIJING</div>
-                    </div>
-                    <div class = "button-wrapper">
-                        <div class="button">NANJING</div>
-                    </div>
-                    <div class = "button-wrapper">
-                        <div class="button">SHANGHAI</div>
-                    </div>
-                    <div class = "button-wrapper">
-                        <div class="button">GUANGZHOU</div>
+                    <div class = "button-wrapper" v-for="item of hot" :key="item.id">
+                        <div class="button">{{item.name}}</div>
                     </div>
                 </div>
             </div>
 
-            <div class="area">
-                <div class="title border-topbottom">A</div>
-                    <div class="item-list">
-                        <div class="item border-bottom">aa</div>
-                        <div class="item border-bottom">ab</div>
-                        <div class="item border-bottom">ac</div>
-                        <div class="item border-bottom">ad</div>
-                        <div class="item border-bottom">ae</div>
-                        <div class="item border-bottom">af</div>
-                        <div class="item border-bottom">ag</div>
-                    </div>
-            </div>
-
-            <div class="area">
-                <div class="title border-topbottom">B</div>
-                    <div class="item-list">
-                        <div class="item border-bottom">aa</div>
-                        <div class="item border-bottom">ab</div>
-                        <div class="item border-bottom">ac</div>
-                        <div class="item border-bottom">ad</div>
-                        <div class="item border-bottom">ae</div>
-                        <div class="item border-bottom">af</div>
-                        <div class="item border-bottom">ag</div>
-                    </div>
-            </div>
-
-            <div class="area">
-                <div class="title border-topbottom">C</div>
-                    <div class="item-list">
-                        <div class="item border-bottom">aa</div>
-                        <div class="item border-bottom">ab</div>
-                        <div class="item border-bottom">ac</div>
-                        <div class="item border-bottom">ad</div>
-                        <div class="item border-bottom">ae</div>
-                        <div class="item border-bottom">af</div>
-                        <div class="item border-bottom">ag</div>
+            <div class="area"  v-for="(item,key) of cities" :key="key" >
+                <div class="title border-topbottom">{{key}}</div>
+                    <div class="item-list" v-for="innerItem of item" :key="innerItem.id">
+                        <div class="item border-bottom">{{innerItem.name}}</div>
                     </div>
             </div>
         </div>
@@ -74,6 +33,10 @@
 import Bscroll from 'better-scroll'
 export default {
     name: 'CityList',
+    props: {
+        hot:Array,
+        cities: Object
+    },
     mounted (){
         this.scroll = new Bscroll(this.$refs.wrapper)
     }
