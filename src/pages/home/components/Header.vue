@@ -7,10 +7,12 @@
       <span class="iconfont">&#xe63c;</span>
       input city/site/theme
     </div>
-    <div class="header-right">
-      {{this.city}}
-      <span class="iconfont arrow-icon">&#xe64a;</span>
-    </div>
+    <router-link to='/city'>
+      <div class="header-right">
+        {{this.city}}
+        <span class="iconfont arrow-icon">&#xe64a;</span>
+      </div>
+    </router-link>
   </div>
 </template>
 
@@ -27,7 +29,7 @@ export default {
   @import '../../../assets/styles/variables.styl'
   .header
     display: flex
-    line-height: 0.9rem
+    line-height: $headerHeight
     background: $bgColor
     color: #fff
     .header-left
