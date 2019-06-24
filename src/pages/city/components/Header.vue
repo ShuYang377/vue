@@ -5,7 +5,6 @@
             <div class="iconfont header-back">&#xe65b;</div>
         </router-link>
     </div>
-    </div>
 </template>
 
 <script>
