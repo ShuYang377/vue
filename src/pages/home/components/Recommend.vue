@@ -3,7 +3,7 @@
         <div class = "title">Hot Sale</div>
         <ul>
             <li class="item border-bottom" 
-                v-for="(item,index) of recommendList" 
+                v-for="(item,index) of list" 
                 :key="index">
                 <img class="item-img" v-bind:src='item.imgUrl'/>
                 <div class="item-info">
@@ -19,26 +19,8 @@
 <script>
 export default {
     name:'HomeRecommend',
-    data (){
-        return {
-            recommendList:[{
-            id:'0001',
-            imgUrl:'https://p1.meituan.net/dpdeal/9a538276d0052e600cf3a036db28546e771381.jpg%40450w_280h_1e_1c_1l%7Cwatermark%3D1%26%26r%3D1%26p%3D9%26x%3D2%26y%3D2%26relative%3D1%26o%3D20',
-            title:'Painting on Canvas',
-            desc:'This is a good hobby for teenage girls'
-            },{
-            id:'0001',
-            imgUrl:'https://p1.meituan.net/dpdeal/9a538276d0052e600cf3a036db28546e771381.jpg%40450w_280h_1e_1c_1l%7Cwatermark%3D1%26%26r%3D1%26p%3D9%26x%3D2%26y%3D2%26relative%3D1%26o%3D20',
-            title:'Painting on Canvas',
-            desc:'This is a good hobby for teenage girls'
-            },{
-            id:'0001',
-            imgUrl:'https://p1.meituan.net/dpdeal/9a538276d0052e600cf3a036db28546e771381.jpg%40450w_280h_1e_1c_1l%7Cwatermark%3D1%26%26r%3D1%26p%3D9%26x%3D2%26y%3D2%26relative%3D1%26o%3D20',
-            title:'Painting on Canvas',
-            desc:'This is a good hobby for teenage girls'
-            }
-            ]
-        }
+    props: {
+        list: Array
     }
 }
 </script>
