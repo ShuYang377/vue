@@ -2,16 +2,19 @@
     <div>
         <div class = "title">Hot Sale</div>
         <ul>
-            <li class="item border-bottom" 
+            <router-link tag="li"
+                class="item border-bottom" 
                 v-for="(item,index) of list" 
-                :key="index">
+                :key="index"
+                :to="'/detail/' + item.id"
+            >
                 <img class="item-img" v-bind:src='item.imgUrl'/>
                 <div class="item-info">
                     <p class="item-title">{{item.title}}</p>
                     <p class="item-desc">{{item.desc}}</p>
                     <button>Detail</button>
                 </div>
-            </li>
+            </router-link>
         </ul>
     </div>
 </template>
