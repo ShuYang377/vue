@@ -5,7 +5,7 @@
                 <div class="title border-topbottom">temporary city</div>
                 <div class="button-list">
                     <div class = "button-wrapper">
-                        <div class="button">BEIJING</div>
+                        <div class="button">{{this.currentCity}}</div>
                     </div>
                 </div>
             </div>
@@ -13,7 +13,11 @@
             <div class="area">
                 <div class="title border-topbottom">hot city</div>
                 <div class="button-list">
-                    <div class = "button-wrapper" v-for="item of hot" :key="item.id">
+                    <div 
+                        class = "button-wrapper" 
+                        v-for="item of hot" 
+                        :key="item.id"
+                        @click = "handleCityClick(item.name)">
                         <div class="button">{{item.name}}</div>
                     </div>
                 </div>
@@ -26,7 +30,11 @@
                 :ref = "key"
                 >
                 <div class="title border-topbottom">{{key}}</div>
-                    <div class="item-list" v-for="innerItem of item" :key="innerItem.id">
+                    <div 
+                        class="item-list" 
+                        v-for="innerItem of item" 
+                        :key="innerItem.id"
+                        @click="handleCityClick(innerItem.name)">
                         <div class="item border-bottom">{{innerItem.name}}</div>
                     </div>
             </div>
@@ -35,6 +43,7 @@
 </template>
 
 <script>
+import { mapState , mapMutations } from 'vuex'
 import Bscroll from 'better-scroll'
 export default {
     name: 'CityList',
@@ -42,6 +51,18 @@ export default {
         hot:Array,
         cities: Object,
         letter: String
+    },
+    computed: {
+        ...mapState({
+            currentCity : 'city'
+        })
+    },
+    methods:{
+        handleCityClick (city){
+            this.changeCity(city)
+            this.$router.push('/')
+        },
+        ...mapMutations(['changeCity'])
     },
     mounted (){
         this.scroll = new Bscroll(this.$refs.wrapper)
