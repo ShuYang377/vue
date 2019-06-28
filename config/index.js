@@ -12,10 +12,14 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api':{
+        //ajax内部存储的
         target : 'http://localhost:8080',
         pathRewrite :{
           '^/api' :'/static/mock'
         }
+
+        //后端服务器
+        // target:'http://localhost:80'
       }
     },
 
@@ -57,6 +61,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
+    //可以运行在后端什么目录下，要加文件夹则加文件夹
     assetsPublicPath: '/',
 
     /**
