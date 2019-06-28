@@ -1,16 +1,16 @@
 <template>
     <div>
         <div class="banner" @click="handleBannerCilck">
-            <img class = "banner-img" src = "https://ss0.baidu.com/73t1bjeh1BF3odCf/it/u=4086409766,2685300209&fm=85&s=A3AEF60643A1C14D409B365D0300D0F8" />
+            <img class = "banner-img" :src = "bannerImg" />
             <div class = "banner-info">
-                <div class="banner-title">Pokemon</div>
+                <div class="banner-title">{{this.sightName}}</div>
                 <div class = "banner-number">
-                    <span class = "iconfont banner-icon">&#xe605;</span>39
+                    <span class = "iconfont banner-icon">&#xe605;</span>{{this.bannerImgs.length}}
                 </div>
             </div>
         </div>
         <common-gallery 
-            :imgs="imgs" 
+            :imgs="bannerImgs" 
             v-show="showGallery"
             @close="handleGalleryClose"></common-gallery>
     </div>
@@ -20,13 +20,14 @@
 import CommonGallery from 'common/gallery/Gallery'
 export default {
     name: 'DetailBanner',
+    props: {
+        sightName: String,
+        bannerImg: String,
+        bannerImgs: Array
+    },
     data () {
        return {
             showGallery : false,
-            imgs:[
-                "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1304734302,1530419688&fm=27&gp=0.jpg",
-                "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1686282416,3516817843&fm=27&gp=0.jpg"
-            ]
        }
     },
     methods: {
